@@ -21,7 +21,7 @@ function Network() {
   const fetchAllUsers = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/user/getAllUserProfile');
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/user/getAllUserProfile',{withCredentials: true});
       // Filter out current user from the list
       const otherUsers = data.profiles?.filter(profile => 
         profile.userId?._id !== user._id
@@ -41,9 +41,9 @@ function Network() {
     try {
       setFollowLoading(prev => ({ ...prev, [targetUserId]: true }));
       
-      await axios.post('/api/user/follow', { 
+      await axios.post('https://socialclone-ap95.onrender.com/api/user/follow', { 
         followingId: targetUserId 
-      });
+      },{withCredentials: true});
       
       // Update the local state to reflect the follow
       setUsers(prev => 
@@ -70,7 +70,7 @@ function Network() {
     try {
       setFollowLoading(prev => ({ ...prev, [targetUserId]: true }));
       
-      await axios.post('/api/user/unfollow', { followingId: targetUserId });
+      await axios.post('https://socialclone-ap95.onrender.com/api/user/unfollow', { followingId: targetUserId },{withCredentials: true});
       
       // Update the local state to reflect the unfollow
       setUsers(prev => 

@@ -20,7 +20,7 @@ function MyPosts() {
   const fetchMyPosts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/post/getMyPosts'); // ✅ Using new route
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/post/getMyPosts',{withCredentials: true}); // ✅ Using new route
       setPosts(data.posts || []);
     } catch (error) {
       console.error("Error fetching my posts:", error);

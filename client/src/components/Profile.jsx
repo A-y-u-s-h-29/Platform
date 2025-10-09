@@ -36,7 +36,7 @@ function Profile() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/user/getUserProfile');
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/user/getUserProfile',{withCredentials: true});
       console.log("Profile data:", data);
       setProfile(data);
     } catch (error) {
@@ -49,7 +49,7 @@ function Profile() {
 
   const fetchConnectionStats = async () => {
     try {
-      const { data } = await axios.get(`/api/user/connection-counts/${user._id}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/connection-counts/${user._id}`,{withCredentials: true});
       setConnectionStats(data.counts);
     } catch (error) {
       console.error("Error fetching connection stats:", error);
@@ -86,11 +86,11 @@ function Profile() {
       const formData = new FormData();
       formData.append('picture', selectedFile);
 
-      const { data } = await axios.post('/api/user/upload-profile', formData, {
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/user/upload-profile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      });
+      },{withCredentials: true});
 
       if (data.profilePicture) {
         await fetchUser();
@@ -113,7 +113,7 @@ function Profile() {
     try {
       setUploading(true);
       
-      const { data } = await axios.post('/api/user/remove-profile-picture');
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/user/remove-profile-picture',{withCredentials: true});
       
       if (data.success) {
         await fetchUser();
@@ -131,11 +131,11 @@ function Profile() {
 
   // Navigate to followers/following pages
   const handleViewFollowers = () => {
-    navigate(`/profile/followers/${user._id}`);
+    navigate(`https://socialclone-ap95.onrender.com/profile/followers/${user._id}`,{withCredentials: true});
   };
 
   const handleViewFollowing = () => {
-    navigate(`/profile/following/${user._id}`);
+    navigate(`https://socialclone-ap95.onrender.com/profile/following/${user._id}`,{withCredentials: true});
   };
 
   const formatDate = (dateString) => {

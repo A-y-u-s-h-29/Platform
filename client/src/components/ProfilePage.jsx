@@ -35,7 +35,7 @@ function ProfilePage() {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/user/getUserProfile/${userId}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/getUserProfile/${userId}`,{withCredentials: true});
       setProfile(data.profile);
       fetchConnectionStats();
     } catch (error) {
@@ -52,7 +52,7 @@ function ProfilePage() {
 
   const fetchConnectionStats = async () => {
     try {
-      const { data } = await axios.get(`/api/user/connection-counts/${userId}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/connection-counts/${userId}`,{withCredentials: true});
       setConnectionStats(data.counts);
     } catch (error) {
       console.error("Error fetching connection stats:", error);
@@ -61,7 +61,7 @@ function ProfilePage() {
 
   const checkFollowingStatus = async () => {
     try {
-      const { data } = await axios.get(`/api/user/check-following/${userId}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/check-following/${userId}`,{withCredentials: true});
       setIsFollowing(data.isFollowing);
     } catch (error) {
       console.error("Error checking follow status:", error);
@@ -79,7 +79,7 @@ function ProfilePage() {
       
       if (isFollowing) {
         // Unfollow
-        await axios.post('/api/user/unfollow', { followingId: userId });
+        await axios.post('https://socialclone-ap95.onrender.com/api/user/unfollow', { followingId: userId },{withCredentials: true});
         setIsFollowing(false);
         setConnectionStats(prev => ({
           ...prev,
@@ -87,7 +87,7 @@ function ProfilePage() {
         }));
       } else {
         // Follow
-        await axios.post('/api/user/follow', { followingId: userId });
+        await axios.post('https://socialclone-ap95.onrender.com/api/user/follow', { followingId: userId },{withCredentials: true});
         setIsFollowing(true);
         setConnectionStats(prev => ({
           ...prev,
@@ -104,9 +104,9 @@ function ProfilePage() {
 
   const handleDownloadProfile = async () => {
     try {
-      const { data } = await axios.get(`/api/user/download?id=${userId}`, {
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/download?id=${userId}`, {
         responseType: 'blob'
-      });
+      },{withCredentials: true});
       
       const url = window.URL.createObjectURL(new Blob([data]));
       const link = document.createElement('a');
@@ -124,11 +124,11 @@ function ProfilePage() {
   };
 
   const handleViewFollowers = () => {
-    navigate(`/profile/followers/${userId}`);
+    navigate(`https://socialclone-ap95.onrender.com/profile/followers/${userId}`,{withCredentials: true});
   };
 
   const handleViewFollowing = () => {
-    navigate(`/profile/following/${userId}`);
+    navigate(`https://socialclone-ap95.onrender.com/profile/following/${userId}`,{withCredentials: true});
   };
 
   const formatDate = (dateString) => {

@@ -11,7 +11,7 @@ function Header() {
   
   const handleLogout = async () => {
     try {
-      await axios.post('/api/user/logout');
+      await axios.post('https://socialclone-ap95.onrender.com/api/user/logout',{withCredentials: true});
     } catch (error) {
       console.error("Logout error:", error);
     } finally {

@@ -32,7 +32,7 @@ function Login() {
         ? { name, username, email, password }
         : { email, password };
 
-      const { data } = await axios.post(`/api/user/${state}`, payload);
+      const { data } = await axios.post(`https://socialclone-ap95.onrender.com/api/user/${state}`, payload,{withCredentials: true});
 
       if (data.success) {
         setUser(data.user);

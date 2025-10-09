@@ -19,7 +19,7 @@ function FollowingList() {
 
   const fetchProfileUser = async () => {
     try {
-      const { data } = await axios.get(`/api/user/getUserProfile/${userId}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/getUserProfile/${userId}`,{withCredentials: true});
       setProfileUser(data.profile);
     } catch (error) {
       console.error("Error fetching profile user:", error);
@@ -29,7 +29,7 @@ function FollowingList() {
   const fetchFollowing = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/user/following/${userId}`);
+      const { data } = await axios.get(`https://socialclone-ap95.onrender.com/api/user/following/${userId}`,{withCredentials: true});
       setFollowing(data.following);
     } catch (error) {
       console.error("Error fetching following:", error);
@@ -46,7 +46,7 @@ function FollowingList() {
     }
 
     try {
-      await axios.post('/api/user/follow', { followingId: targetUserId });
+      await axios.post('https://socialclone-ap95.onrender.com/api/user/follow', { followingId: targetUserId },{withCredentials: true});
       fetchFollowing(); // Refresh the list
     } catch (error) {
       console.error("Error following user:", error);
@@ -56,7 +56,7 @@ function FollowingList() {
 
   const handleUnfollow = async (targetUserId) => {
     try {
-      await axios.post('/api/user/unfollow', { followingId: targetUserId });
+      await axios.post('https://socialclone-ap95.onrender.com/api/user/unfollow', { followingId: targetUserId },{withCredentials: true});
       fetchFollowing(); // Refresh the list
     } catch (error) {
       console.error("Error unfollowing user:", error);

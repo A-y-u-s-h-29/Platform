@@ -34,7 +34,7 @@ function Home() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/post/getAllPosts');
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/post/getAllPosts',{withCredentials: true});
       
       if (data.success) {
         setPosts(data.posts);
@@ -61,7 +61,7 @@ function Home() {
     try {
       setLikingPost(postId);
       
-      const { data } = await axios.put('/api/post/like', { postId });
+      const { data } = await axios.put('https://socialclone-ap95.onrender.com/api/post/like', { postId },{withCredentials: true});
       
       if (data.success) {
         setPosts(prev => 
@@ -90,9 +90,9 @@ function Home() {
   // Fetch comments for a specific post
   const fetchComments = async (postId) => {
     try {
-      const { data } = await axios.get('/api/post/comments', {
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/post/comments', {
         params: { postId }
-      });
+      },{withCredentials: true});
       
       if (data.success) {
         setPostComments(prev => ({
@@ -129,10 +129,10 @@ function Home() {
     if (!commentText || !user) return;
 
     try {
-      const { data } = await axios.post('/api/post/comment', {
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/post/comment', {
         postId,
         body: commentText
-      });
+      },{withCredentials: true});
 
       if (data.success) {
         setCommentTexts(prev => ({
@@ -158,9 +158,9 @@ function Home() {
   // Delete comment
   const handleDeleteComment = async (commentId, postId) => {
     try {
-      const { data } = await axios.post('/api/post/deletecomment', {
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/post/deletecomment', {
         commentId
-      });
+      },{withCredentials: true});
 
       if (data.success) {
         await fetchComments(postId);

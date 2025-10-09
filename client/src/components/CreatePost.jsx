@@ -68,11 +68,11 @@ function CreatePost() {
         formData.append('media', postData.media);
       }
 
-      const { data } = await axios.post('/api/post/postUpload', formData, {
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/post/postUpload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      });
+      },   {withCredentials: true});
 
       console.log('Post created:', data);
       navigate('/'); // Redirect to home after successful post

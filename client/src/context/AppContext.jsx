@@ -2,7 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "https://socialclone-ap95.onrender.com/";
+
 
 export const AppContext = createContext();
 
@@ -18,7 +18,7 @@ export const AppContextProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/user/isauth');
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/user/isauth',  { withCredentials: true });
       if (data.success) {
         setUser(data.user);
       } else {

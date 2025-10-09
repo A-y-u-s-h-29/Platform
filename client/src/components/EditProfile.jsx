@@ -30,7 +30,7 @@ function EditProfile() {
   const fetchProfileData = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get('/api/user/getUserProfile');
+      const { data } = await axios.get('https://socialclone-ap95.onrender.com/api/user/getUserProfile',{withCredentials: true});
       setProfile(data);
       setFormData({
         bio: data?.bio || '',
@@ -108,7 +108,7 @@ function EditProfile() {
     e.preventDefault();
     try {
       setSaving(true);
-      const { data } = await axios.post('/api/user/update-profile', formData);
+      const { data } = await axios.post('https://socialclone-ap95.onrender.com/api/user/update-profile', formData,   {withCredentials: true});
       
       if (data.message === "Profile updated successfully") {
         navigate('/profile');
