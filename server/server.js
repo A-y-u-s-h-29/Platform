@@ -14,7 +14,7 @@ await connectDB();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // ✅ Local frontend
+    
       "https://iridescent-phoenix-783edd.netlify.app/", // ✅ Deployed frontend
     ],
     credentials: true, // ✅ Allow cookies / tokens
