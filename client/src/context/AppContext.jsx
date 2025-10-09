@@ -2,7 +2,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://socialclone-ap95.onrender.com/";
 
 export const AppContext = createContext();
 
