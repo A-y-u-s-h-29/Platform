@@ -22,7 +22,7 @@ import { uploadPicture ,
   registerUser, 
   unfollowUser, 
   updateProfileData, 
-  updateUserProfile,} from "../controllers/usercontrollers.js";
+  updateUserProfile,} from "../controllers/userControllers.js";
 
 const upload = multer({
   storage: multer.memoryStorage()

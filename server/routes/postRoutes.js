@@ -2,7 +2,7 @@ import express from "express";
 
 import multer from "multer";
 import { protectUser } from "../middleware/protectUser.js";
-import { likePost , activeCheck, createComment, createPost, deleteComment,deletePost, getAllPosts, getCommentsByPostId, getMyPosts,} from "../controllers/postcontrollers.js";
+import { likePost , activeCheck, createComment, createPost, deleteComment,deletePost, getAllPosts, getCommentsByPostId, getMyPosts,} from "../controllers/postControllers.js";
 
 
 const upload = multer({
