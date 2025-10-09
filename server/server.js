@@ -13,11 +13,8 @@ app.use(cookieParser());
 await connectDB();
 app.use(
   cors({
-    origin: [
-    
-      "https://iridescent-phoenix-783edd.netlify.app/", // ✅ Deployed frontend
-    ],
-    credentials: true, // ✅ Allow cookies / tokens
+    origin: "https://iridescent-phoenix-783edd.netlify.app", // your frontend URL
+    credentials: true, // allow cookies / auth headers if needed
   })
 );
 
